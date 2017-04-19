@@ -3,6 +3,7 @@ package org.action;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.struts2.ServletActionContext;
 import org.factory.CourseServiceFactory;
 import org.factory.StudentServiceFactory;
 import org.pojo.Course;
@@ -28,11 +29,19 @@ public class StudentAction {
 	
 	private Student student;
 
-	private String insert() throws Exception{
-		StudentServiceFactory.getIStudentServiceInstance().addStudent(student);
-		message="添加成功";
-		url="pages_seccess.jsp";
-		return "forward";
+	public String testStudent() throws Exception{
+		
+		Student student=(Student)ServletActionContext.getRequest().getSession().getAttribute("student");
+		
+		System.out.println("----------------------------------------------");
+		
+		System.out.println(student.toString());
+		
+//		StudentServiceFactory.getIStudentServiceInstance().addStudent(student);
+//		message="添加成功";
+//		url="pages_seccess.jsp";
+		setStudentAttribute("student");
+		return "welcome";
 	}
 	
 	public String update() throws Exception{
@@ -62,7 +71,9 @@ public class StudentAction {
 	
 	
 	
-	
+	public void setStudentAttribute(String name) throws Exception{
+		ServletActionContext.getRequest().getSession().setAttribute(name,student);
+	}
 	
 	
 	

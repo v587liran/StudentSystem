@@ -28,7 +28,7 @@
         <property name="telephone" type="java.lang.String">
             <column name="telephone" length="11" />
         </property>
-        <set name="courses" table="selecourse" catalog="studentssystemdatabase">
+        <set name="courses" table="selecourse" lazy="false" catalog="studentssystemdatabase">
             <key>
                 <column name="sid" length="12" not-null="true" />
             </key>

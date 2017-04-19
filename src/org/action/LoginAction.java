@@ -3,14 +3,15 @@ package org.action;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.ServletActionContext;
 import org.factory.AdminServiceFactory;
 import org.factory.CourseServiceFactory;
 import org.factory.StudentServiceFactory;
-import org.hibernate.mapping.Array;
 import org.pojo.Admin;
 import org.pojo.Course;
 import org.pojo.Student;
@@ -26,18 +27,29 @@ public class LoginAction extends ActionSupport {
 	private String address;
 	private String telephone;
 	
+	private String cid;
+	private String cname;
+	private String cteacher;
+	private String ctime;
+	private Integer ccredits;
+	private String caddress;
+	
 	private int pageNo=1;
 	private int pageSize=2;
 	private String keyword="";
 	private String column="cid";
 	
 	private int count;
+	
+	private Course course;
+	
 	private List<Course> allCourse;
+	private List<Course> allSelectionList;
 	
 	private int type;
 	private Student student;
 	private Admin admin;
-	
+
 	public String login() throws Exception{
 		type=(Integer) ServletActionContext.getRequest().getAttribute("type");
 		if(type==1){
@@ -91,6 +103,51 @@ public class LoginAction extends ActionSupport {
 		}
 		count=(Integer) map.get("allCount");
 		return "courseList";
+	}
+	
+	public String aCourseInfo() throws Exception{
+		Course acourse=CourseServiceFactory.getICourseServiceInstance().findById(course.getCid());
+		course.setCid(acourse.getCid());
+		course.setCname(acourse.getCname());
+		course.setCteacher(acourse.getCteacher());
+		course.setCtime(acourse.getCtime());
+		course.setCaddress(acourse.getCaddress());
+		course.setCcredits(acourse.getCcredits());
+		return "course_info";
+	}
+	
+	public String getACourse() throws Exception{
+		Course acourse=CourseServiceFactory.getICourseServiceInstance().findById(course.getCid());
+		
+		course.setCid(acourse.getCid());
+		course.setCname(acourse.getCname());
+		course.setCteacher(acourse.getCteacher());
+		course.setCtime(acourse.getCtime());
+		course.setCaddress(acourse.getCaddress());
+		course.setCcredits(acourse.getCcredits());
+		Set<Course> allSelectionSet=new HashSet<Course>();
+		
+		student=(Student) ServletActionContext.getRequest().getSession().getAttribute("student");
+		
+		allSelectionSet=student.getCourses();
+		
+		allSelectionSet.add(acourse);
+		student.setCourses(allSelectionSet);
+		
+		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
+		setStudentAttribute("student");
+		
+		
+		
+//		for(Course as:allSelection){
+//			allCourse.add(as);
+//		}
+//		allCourse.add(acourse);
+//		以上是将已有选课和刚选课程加入到列表allCourse中
+		
+		
+		
+		return "getACourseSeccess";
 	}
 	
 	public void setStudentAttribute(String name) throws Exception{
@@ -223,6 +280,62 @@ public class LoginAction extends ActionSupport {
 
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
+	}
+
+	public String getCid() {
+		return cid;
+	}
+
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getCteacher() {
+		return cteacher;
+	}
+
+	public void setCteacher(String cteacher) {
+		this.cteacher = cteacher;
+	}
+
+	public String getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(String ctime) {
+		this.ctime = ctime;
+	}
+
+	public Integer getCcredits() {
+		return ccredits;
+	}
+
+	public void setCcredits(Integer ccredits) {
+		this.ccredits = ccredits;
+	}
+
+	public String getCaddress() {
+		return caddress;
+	}
+
+	public void setCaddress(String caddress) {
+		this.caddress = caddress;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 	
 }

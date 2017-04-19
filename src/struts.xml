@@ -10,10 +10,12 @@
 			<result name="welcome">/student/welcome.jsp</result>
 			<result name="fail">/student/fail.jsp</result>
 			<result name="courseList">/student/student_seleCourse.jsp</result>
-		</action>
-		<action name="course" class="org.action.CourseAction">
 			<result name="course_info">/course/course_info.jsp</result>
-			<result name="course_update">/course/course_update.jsp</result>
+			<result name="getACourseSeccess">/student/welcome.jsp</result>
+		</action>
+		
+		<action name="student" class="org.action.StudentAction">
+			<result name="welcome">/student/welcome.jsp</result>
 		</action>
 	</package>
 </struts>    

@@ -29,16 +29,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		密码：<s:property value="student.password" ></s:property><br/>
   		<a href="student/student_info.jsp">点击查看个人信息信息</a><br/>
   		<a href="student/student_update.jsp">修改个人信息</a><br/>
-  		<a href="user!getCourseList.action">选课</a>
-  		<a href="">查看选课</a>
+  		<a href="user!getCourseList.action">选课</a><br/>
+  		<a href="">查看选课</a><br/>
   		<h1>Welcome</h1><br/>
+  		
+  		<a href="student!testStudent.action">测试连接</a>
   		
   		<br/><br/><br/>
   		用户ID：<s:property value="admin.aid" ></s:property><br/>
-  		密码：<s:property value="admin.apassword" ></s:property>
-  		<a href="">查看学生列表</a>
-  		<a href="">查看所有课程</a>
-  		<h1>Welcome</h1>
+  		密码：<s:property value="admin.apassword" ></s:property><br/>
+  		<a href="">查看学生列表</a><br/>
+  		<a href="">查看所有课程</a><br/>
+  		<h1>Welcome</h1><br/>
   	</center>
   </body>
 </html>

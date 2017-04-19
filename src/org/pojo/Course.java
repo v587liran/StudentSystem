@@ -100,4 +100,11 @@ public class Course implements java.io.Serializable {
 		this.students = students;
 	}
 
+	@Override
+	public String toString() {
+		return "Course [cid=" + cid + ", cname=" + cname + ", cteacher="
+				+ cteacher + ", ctime=" + ctime + ", ccredits=" + ccredits
+				+ ", caddress=" + caddress + ", students=" + students + "]";
+	}
+
 }

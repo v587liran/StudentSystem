@@ -25,7 +25,7 @@
         <property name="caddress" type="java.lang.String">
             <column name="caddress" length="300" />
         </property>
-        <set name="students" inverse="true" table="selecourse" catalog="studentssystemdatabase">
+        <set name="students" inverse="true" lazy="false" table="selecourse" catalog="studentssystemdatabase">
             <key>
                 <column name="cid" length="20" not-null="true" />
             </key>
