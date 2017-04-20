@@ -48,8 +48,8 @@ public class StudentAction {
 		updateStudent();
 		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
 		StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
-		System.out.println(student.getTelephone());
-		return "welcome";
+		System.out.println("----------------------------------"+student.getPassword());
+		return "updateSeccess";
 	}
 	
 	public void updateStudent() throws Exception{
@@ -61,6 +61,7 @@ public class StudentAction {
 		student.setBirthday(birthday);
 		student.setTelephone(telephone);
 		student.setAddress(address);
+		student.setCourses(((Student)ServletActionContext.getRequest().getSession().getAttribute("student")).getCourses());
 	}
 	
 	public String getCourseList() throws Exception{
@@ -68,14 +69,9 @@ public class StudentAction {
 		return "seleCourse";
 	}
 	
-	
-	
-	
 	public void setStudentAttribute(String name) throws Exception{
 		ServletActionContext.getRequest().getSession().setAttribute(name,student);
 	}
-	
-	
 	
 	public int getPageNo() {
 		return pageNo;

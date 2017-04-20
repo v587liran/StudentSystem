@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<title>后台管理</title>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 <body>
 <div id="wrapper">
@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<div id="navigator">
-		<iframe src="../tree.jsp"></iframe>
+		<iframe src="tree_admin.jsp"></iframe>
         </div>
 	<div id="main">
 		<iframe name="MainFrame" src="Users_login_main.jsp"></iframe>

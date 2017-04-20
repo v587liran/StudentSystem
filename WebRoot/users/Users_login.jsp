@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -129,6 +130,7 @@ body{
 	text-shadow: 0 1px 1px #F6F6F6;
 }
 #user-name{
+	float:left;
 	height:35px;
 	width:100%;
 	margin-top:20px;
@@ -290,9 +292,6 @@ body{
 						<div id="button-group">
 							<input type="submit" class="btn" value="登录"/>
 							<input type="reset" class="btn" value="重置"/>
-						</div>
-						<div>
-						  <s:fielderror/> <!-- 显示表单验证的出错信息 -->
 						</div>
 						<!-- end of form -->
 					</form>

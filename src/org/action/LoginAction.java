@@ -18,9 +18,6 @@ public class LoginAction extends ActionSupport {
 
 	public String login() throws Exception{
 		type=(Integer) ServletActionContext.getRequest().getAttribute("type");
-		System.out.println("---------------------------"+userid);
-		System.out.println("---------------------------"+userpassword);
-		System.out.println("---------------------------"+type);
 		if(type==1){
 			//判断为学生
 			student=new Student();
@@ -28,7 +25,7 @@ public class LoginAction extends ActionSupport {
 			student.setPassword(userpassword);
 			if(StudentServiceFactory.getIStudentServiceInstance().isLogin(student)){
 				ServletActionContext.getRequest().getSession().setAttribute("student",student);
-				return "welcome";
+				return "studentwelcome";
 			}
 		} else if(type==0) {
 			//判断为管理员
@@ -37,7 +34,7 @@ public class LoginAction extends ActionSupport {
 			admin.setApassword(userpassword);
 			if(AdminServiceFactory.getIAdminServiceInstance().idLogin(admin)){
 				ServletActionContext.getRequest().getSession().setAttribute("admin",admin);
-				return "welcome";
+				return "adminwelcome";
 			}
 		}
 		return "fail";

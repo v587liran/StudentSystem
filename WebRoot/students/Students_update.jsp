@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -6,11 +7,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/default.css" />
+	<link rel="stylesheet" type="text/css" href="../css/default.css" />
 <style type="text/css">
 * {
     background: none repeat scroll 0 0 transparent;
-    border: 0 none;
+    border: 1 none;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
@@ -47,8 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	height:35px;
 }
 .button{
-	float:left;
-	margin-right:10px;
+	margin-top:20px;
 	padding-left:10px;
 	padding-right:10px;
 	font-size:14px;
@@ -70,21 +70,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #mainContainer{
 	padding-left:10px;
 	padding-right:10px;
-	text-align:center;
+	text-align:left;
 	width:98%;
-	font-size:12px;
+	font-size:16px;
 }
 </style>
 <body>
-<div id="navi">
-	<!-- 导航空白 -->
-</div>
-<div id="tips">
-	<!-- 导航空白 -->
-</div>
-<div id="mainContainer">
-   <img src="images/welcome.jpg">
-   <!--数据表格空白 -->
+<script type="text/javascript" src="../js/Calendar3.js"></script>
+
+	<div id="navi">
+		<div id='naviDiv'>
+			<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;个人信息管理<span>&nbsp;
+			<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;修改个人信息<span>&nbsp;
+		</div>
+	</div>
+	<div id="tips"></div>
+	<div id="mainContainer">
+	
+	<center>
+    		<form action="students!update.action" method="post">
+	    		<table border="1" width="50%">
+					<tr>
+						<td>用户ID</td>
+						<td><input type="text" name="sid" value="${student.sid }" readonly="true"></td>
+					</tr>
+					<tr>
+						<td>密码</td>
+						<td><input type="text" name="password" value="${student.password }"></td>
+					</tr>
+					<tr>
+						<td>姓名</td>
+						<td><input type="text" name="sname" value="${student.sname }"></td>
+					</tr>
+					<tr>
+						<td>性别</td>
+						<td><input type="text" name="gender" value="${student.gender }"></td>
+					</tr>
+					<tr>
+						<td>出生日期</td>
+						<td><input type="text" name="birthday" value="${student.birthday }"></td>
+					</tr>
+					<tr>
+						<td>联系电话</td>
+						<td><input type="text" name="telephone" value="${student.telephone }"></td>
+					</tr>
+					<tr>
+						<td>家庭住址</td>
+						<td><input type="text" name="address" value="${student.address }"></td>
+					</tr>
+				</table>
+				<input type="submit" value="确认修改"/>
+			</form>
+    	</center>
 </div>
 </body>
 </html>

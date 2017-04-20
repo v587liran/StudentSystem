@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+	<!-- 
+		<constant name="struts.devMode" value="true"></constant>
+	 -->
 	
 	<package name="root" namespace="/" extends="struts-default">
 		<action name="user" class="org.action.LoginAction">
-			<result name="welcome">/users/Users_login_success.jsp</result>
+			<result name="studentwelcome">/users/Students_login_success.jsp</result>
+			<result name="adminwelcome">/users/Admin_login_success.jsp</result>
 			<result name="fail">/student/fail.jsp</result>
 		</action>
+		
+		<action name="students" class="org.action.StudentAction">
+			<result name="updateSeccess">/students/Students_add_success.jsp</result>
+		</action>
 	</package>
+	
+	
 	
 </struts>    

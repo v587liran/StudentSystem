@@ -15,15 +15,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <script type="text/javascript"> 
 var treeMenu = [
-	{ level:1, name:"学生管理"},
-	{ level:2, name:"学生列表", ico:"images/icon_default.gif",link:"students/Students_query.action"},
+	/* { level:1, name:"学生管理"},
+	{ level:1, name:"学生列表", ico:"images/icon_default.gif",link:"students/Students_query.action"},
 	{ level:1, name:"教师管理"},
 	{ level:2, name:"教师列表", ico:"images/icon_default.gif",link:"role_list.html"},
 	{ level:1, name:"信息管理"},
 	{ level:2, name:"新闻管理", ico:"images/icon_default.gif",link:"news_list.html"},
 	{ level:2, name:"公告管理", ico:"images/icon_default.gif",link:"bulletin_list.html"},
 	{ level:1, name:"系统邮件", ico:"images/icon_default.gif"},
-	{ level:1, name:"网络文件", ico:"images/icon_default.gif",link:"complaint_list.html"}
+	{ level:1, name:"网络文件", ico:"images/icon_default.gif",link:"complaint_list.html"} */
+	
+	{ level:1, name:"个人信息管理"},
+	{ level:2, name:"查看个人信息", ico:"images/icon_default.gif",link:"students/Students_query.action"},
+	{ level:2, name:"修改个人密码", ico:"images/icon_default.gif",link:"students/Students_query.action"},
+	{ level:1, name:"课程管理"},
+	{ level:2, name:"课程列表", ico:"images/icon_default.gif",link:"role_list.html"},
+	{ level:2, name:"添加课程", ico:"images/icon_default.gif",link:"role_list.html"},
+	{ level:1, name:"学生信息管理"},
+	{ level:2, name:"学生列表", ico:"images/icon_default.gif",link:"news_list.html"},
+	{ level:2, name:"添加学生信息", ico:"images/icon_default.gif",link:"news_list.html"},
+	{ level:1, name:"公告管理", ico:"images/icon_default.gif",link:"bulletin_list.html"},
+	{ level:1, name:"系统文件", ico:"images/icon_default.gif",link:"complaint_list.html"} 
 ];
 </script>
 <style>
