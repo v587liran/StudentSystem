@@ -59,7 +59,6 @@ public class StudentServiceImpl implements IStudentService {
 	@Override
 	public boolean isLogin(Student student) throws Exception {
 		boolean flag = false;
-
 		try {
 			Student students = StudentDAOFactory.getIStudentDAOInstance().findById(student.getSid());
 			if (students!=null && student.getPassword().equals(students.getPassword())) {
@@ -69,10 +68,10 @@ public class StudentServiceImpl implements IStudentService {
 				student.setGender(students.getGender());
 				student.setBirthday(students.getBirthday());
 				student.setAddress(students.getAddress());
-				student.setTelephone(student.getTelephone());
+				student.setTelephone(students.getTelephone());
 				student.setCourses(students.getCourses());
 				return true;
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

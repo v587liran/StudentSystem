@@ -71,4 +71,13 @@ public class StudentTest {
 			System.out.println(a);
 		}
 	}
+	@Test
+	public void test2() throws Exception{
+		Student student=new Student();
+		student.setSid("1001");
+		student.setPassword("1234");
+		boolean flag=false;
+		flag=StudentServiceFactory.getIStudentServiceInstance().isLogin(student);
+		System.out.println(student.getAddress());
+	}
 }

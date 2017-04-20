@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<!-- 
-		<constant name="struts.devMode" value="true"></constant>
-	 -->
 	
 	<package name="root" namespace="/" extends="struts-default">
 		<action name="user" class="org.action.LoginAction">
-			<result name="welcome">/student/welcome.jsp</result>
+			<result name="welcome">/users/Users_login_success.jsp</result>
 			<result name="fail">/student/fail.jsp</result>
-			<result name="courseList">/student/student_seleCourse.jsp</result>
-			<result name="course_info">/course/course_info.jsp</result>
-			<result name="getACourseSeccess">/student/welcome.jsp</result>
-		</action>
-		
-		<action name="student" class="org.action.StudentAction">
-			<result name="welcome">/student/welcome.jsp</result>
 		</action>
 	</package>
+	
 </struts>    

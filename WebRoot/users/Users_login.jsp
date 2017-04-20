@@ -146,15 +146,15 @@ body{
 }
 #user-type{
 	margin-top:20px;
-	<!-- margin-left:45px;-->
 	height:35px;
 	width:100%;
 	vertical-align: middle;
 	display: inline-block;
 	line-height: 35px;
-	font-size:20px;
+	font-size:19px;
 	font-weight:bold;
 	font-family:微软雅黑;
+	display: inline-block;
 	text-shadow: 0 1px 1px #F6F6F6;
 }
 #user-checkcode{
@@ -193,7 +193,7 @@ body{
 	color:red;
 }
 .item{
-	margin-left:20px;
+	margin-left:135px;
 	font-family:微软雅黑;
 	font-size:20px;
 	font-weight:bold;
@@ -204,6 +204,11 @@ body{
 	text-shadow: 0 1px 1px #F6F6F6;
 }
 .input{
+	vertical-align: middle;
+	display: inline-block;
+}
+.radio{
+	margin-top:3px;
 	vertical-align: middle;
 	display: inline-block;
 }
@@ -248,8 +253,8 @@ body{
 	<div id="header">
 		<div id="logo"></div>
 		<div id="heading">
-			<div id="title">后台管理系统</div>
-			<div id="subTitle">Ver 1.0</div>
+			<div id="title">学生系统</div>
+			<div id="subTitle">1.0</div>
 		</div>
 	</div>
 	<div id="main">
@@ -260,35 +265,36 @@ body{
 				</div>
 				<div id="right">
 					
-					<form name="loginForm" action="<%=path%>/users/Users_login.action" method="post">
-					<!-- start of login form -->
-					<div id="welcome">
-						<span id="welcome-text">管&nbsp;理&nbsp;登&nbsp;录</span>
-					</div>
-					<div id="user-name">
-						<span class="item">用户名:</span>
-						<span><input type="text" name="username" class="form-input"></span>
-					</div>
-					<div id="user-password">
-						<span class="item">密&nbsp;&nbsp;&nbsp;码:</span>
-						<span class="input"><input type="password" name="password" class="form-input"></span>
-					</div>
-					<div id="user-type">
-						<span class="item">我&nbsp;&nbsp;&nbsp;是:</span>
-						<span class="input">
-							学生<input type="radio" name="type" value="1" class="form-radio" >
-							管理员<input type="radio" name="type" value="0" class="form-radio">
-						</span>
-						
-					</div>
-					<div id="button-group">
-						<input type="submit" class="btn" value="登录"/>
-						<input type="reset" class="btn" value="重置"/>
-					</div>
-					<div>
-					  <s:fielderror/> <!-- 显示表单验证的出错信息 -->
-					</div>
-					<!-- end of form -->
+					<form action="user!login.action" method="post">
+						<!-- start of login form -->
+						<div id="welcome">
+							<span id="welcome-text">管&nbsp;理&nbsp;登&nbsp;录</span>
+						</div>
+						<div id="user-name">
+							<span class="item">用户名:</span>
+							<span><input type="text" name="userid" class="form-input"></span>
+						</div>
+						<div id="user-password">
+							<span class="item">密&nbsp;&nbsp;&nbsp;码:</span>
+							<span class="input"><input type="password" name="userpassword" class="form-input"></span>
+						</div>
+						<div id="user-type">
+							<span class="item">我&nbsp;&nbsp;&nbsp;是:</span>
+							<span class="radio">
+								学生<input type="radio" name="type" value="1" class="form-radio" >
+								&nbsp;
+								管理员<input type="radio" name="type" value="0" class="form-radio">
+							</span>
+							
+						</div>
+						<div id="button-group">
+							<input type="submit" class="btn" value="登录"/>
+							<input type="reset" class="btn" value="重置"/>
+						</div>
+						<div>
+						  <s:fielderror/> <!-- 显示表单验证的出错信息 -->
+						</div>
+						<!-- end of form -->
 					</form>
 					
 				</div>
@@ -296,7 +302,7 @@ body{
 		</div>
 	</div>
 	<div id="footer">
-		<div id="text">Copyright © 2009-2015 All Rights Reserved Powered By Simoniu</div>
+		<div id="text">Copyright © 2017-04——2017-05 All Rights Reserved Powered By SM133</div>
 	</div>
 </div>
 </body>
