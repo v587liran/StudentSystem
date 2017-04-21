@@ -48,8 +48,9 @@ public class StudentServiceImplTest {
 		Map<String,Object> map=new HashMap<String ,Object>();
 		map=StudentServiceFactory.getIStudentServiceInstance().findAll(1, 2, "", "sid");
 		List<Student> list=(List<Student>)map.get("findAll");
-		
-		System.out.println(map.get("allCount")+"-----");
+		int count=(Integer) map.get("allCount");
+		int sum=count+1;
+		System.out.println(sum);
 		
 		for(Student l:list){
 			System.out.println(l.getPassword());

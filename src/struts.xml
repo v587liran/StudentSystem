@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<!-- 
-		<constant name="struts.devMode" value="true"></constant>
-	 -->
+	<!-- 开发者模式
+	<constant name="struts.devMode" value="true"></constant>
+	-->
+	<!-- 指定全局国际化资源文件 
+	<constant name="struts.custom.i18n.resources" value="mess"/>
+	-->
 	
 	<package name="root" namespace="/" extends="struts-default">
 		<action name="user" class="org.action.LoginAction">
@@ -12,11 +15,15 @@
 			<result name="fail">/student/fail.jsp</result>
 		</action>
 		
-		<action name="students" class="org.action.StudentAction">
-			<result name="updateSeccess">/students/Students_add_success.jsp</result>
+		<action name="student" class="org.action.StudentAction">
+			<result name="updateSeccess">/students/Students_update_success.jsp</result>
+			<result name="allStudentsList">/students/Students_allList.jsp</result>
+			<result name="getAStudentInfo" >/students/Students_info.jsp</result>
+			<result name="updateStudentInfo">/students/Students_update.jsp</result>
+		</action>
+		
+		<action name="studentToCourse" class="org.action.StudentToCourseAction">
+			<result name="getASelecourseList">/students/Students_seleCourse_list.jsp</result>
 		</action>
 	</package>
-	
-	
-	
 </struts>    

@@ -2,6 +2,7 @@ package org.action;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.factory.CourseServiceFactory;
@@ -18,102 +19,108 @@ public class StudentAction {
 	private String address;
 	private String telephone;
 	
-	private int pageNo;
-	private int pageSize;
-	private String keyword;
-	private String column;
-	private List<Course> courseList;
+	private int pageNo=1;
+	private int pageSize=5;
+	private String keyword="";
+	private String column="sid";
+	private int allCount;
+	
+	private List<Student> allStudentsList;
 	
 	private String message;
 	private String url;
 	
+	private Student students;
+	private Student astudent;
 	private Student student;
-
-	public String testStudent() throws Exception{
-		
-		Student student=(Student)ServletActionContext.getRequest().getSession().getAttribute("student");
-		
-		System.out.println("----------------------------------------------");
-		
-		System.out.println(student.toString());
-		
-//		StudentServiceFactory.getIStudentServiceInstance().addStudent(student);
-//		message="添加成功";
-//		url="pages_seccess.jsp";
-		setStudentAttribute("student");
-		return "welcome";
-	}
 	
 	public String update() throws Exception{
-		updateStudent();
-		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
-		StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
-		System.out.println("----------------------------------"+student.getPassword());
+		students=new Student();
+		students.setSid(sid);
+		students.setPassword(password);
+		students.setSname(sname);
+		students.setGender(gender);
+		students.setBirthday(birthday);
+		students.setTelephone(telephone);
+		students.setAddress(address);
+		
+		Student student=(Student) ServletActionContext.getRequest().getSession().getAttribute("student");
+		students.setCourses(student.getCourses());
+		
+		StudentServiceFactory.getIStudentServiceInstance().upDate(students);
+		Student students=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
+		ServletActionContext.getRequest().getSession().setAttribute("student", students);
+		
+		System.out.println("----------------------------------"+students.getPassword());
+		
 		return "updateSeccess";
 	}
+
+	public String getStudentList() throws Exception{
+		Map<String, Object> map=StudentServiceFactory.getIStudentServiceInstance().findAll(pageNo, pageSize, keyword, column);
+		allStudentsList=(List<Student>) map.get("findAll");
+		allCount=(Integer) map.get("allCount");
+		
+		System.out.println("---------------"+allCount);
+		
+		for(Student all:allStudentsList){
+			System.out.println(all.getSname()+"--------"+all.getAddress());
+		}
+		
+		return "allStudentsList";
+	}
 	
-	public void updateStudent() throws Exception{
+	public String getAStudentInfo() throws Exception{
+		astudent=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
 		student=new Student();
-		student.setSid(sid);
-		student.setPassword(password);
-		student.setSname(sname);
-		student.setGender(gender);
-		student.setBirthday(birthday);
-		student.setTelephone(telephone);
-		student.setAddress(address);
-		student.setCourses(((Student)ServletActionContext.getRequest().getSession().getAttribute("student")).getCourses());
+		student.setSid(astudent.getSid());
+		student.setPassword(astudent.getPassword());
+		student.setSname(astudent.getSname());
+		student.setGender(astudent.getGender());
+		student.setBirthday(astudent.getBirthday());
+		student.setTelephone(astudent.getTelephone());
+		student.setAddress(astudent.getAddress());
+		return "getAStudentInfo";
 	}
 	
-	public String getCourseList() throws Exception{
-		courseList=(List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(pageNo, pageSize, keyword, column);
-		return "seleCourse";
+	public String updateStudentInfo() throws Exception{
+		astudent=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
+		student=new Student();
+		student.setSid(astudent.getSid());
+		student.setPassword(astudent.getPassword());
+		student.setSname(astudent.getSname());
+		student.setGender(astudent.getGender());
+		student.setBirthday(astudent.getBirthday());
+		student.setTelephone(astudent.getTelephone());
+		student.setAddress(astudent.getAddress());
+		return "updateStudentInfo";
 	}
 	
-	public void setStudentAttribute(String name) throws Exception{
-		ServletActionContext.getRequest().getSession().setAttribute(name,student);
-	}
 	
-	public int getPageNo() {
-		return pageNo;
+	
+	
+	public Student getAstudent() {
+		return astudent;
 	}
 
-	public void setPageNo(int pageNo) {
-		this.pageNo = pageNo;
-	}
-
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	public String getColumn() {
-		return column;
-	}
-
-	public void setColumn(String column) {
-		this.column = column;
-	}
-
-	public void setCourseList(List<Course> courseList) {
-		this.courseList = courseList;
+	public void setAstudent(Student astudent) {
+		this.astudent = astudent;
 	}
 
 	public Student getStudent() {
 		return student;
 	}
+
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+
+	public int getAllCount() {
+		return allCount;
+	}
+
+	public void setAllCount(int allCount) {
+		this.allCount = allCount;
 	}
 
 	public String getSid() {
@@ -172,6 +179,46 @@ public class StudentAction {
 		this.telephone = telephone;
 	}
 
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getColumn() {
+		return column;
+	}
+
+	public void setColumn(String column) {
+		this.column = column;
+	}
+
+	public List<Student> getAllStudentsList() {
+		return allStudentsList;
+	}
+
+	public void setAllStudentsList(List<Student> allStudentsList) {
+		this.allStudentsList = allStudentsList;
+	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -187,5 +234,18 @@ public class StudentAction {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+
+	public Student getStudents() {
+		return students;
+	}
+
+
+	public void setStudents(Student students) {
+		this.students = students;
+	}
+
+	
+	
 	
 }

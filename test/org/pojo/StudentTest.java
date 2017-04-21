@@ -11,7 +11,12 @@ import org.jdbc.HibernateSessionFactory;
 import org.junit.Test;
 
 public class StudentTest {
+	
+	@Test
+	public void testAdd() throws Exception{
 
+	}
+	
 	@Test
 	public void test() throws Exception {
 		Student student=(Student) HibernateSessionFactory.getSession().get(Student.class, "1001");

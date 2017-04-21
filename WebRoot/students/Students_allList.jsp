@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -95,48 +96,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div id="navi">
 		<div id='naviDiv'>
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;个人信息管理<span>&nbsp;
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;修改个人信息<span>&nbsp;
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;</span>
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生列表<span>&nbsp;</span>
 		</div>
 	</div>
 	<div id="tips"></div>
 	<div id="mainContainer">
 	
 	<center>
-    		<form action="student!update.action" method="post">
-	    		<table border="1" width="50%">
-					<tr>
-						<td>用户ID</td>
-						<td><input type="text" name="sid" value="${student.sid }" readonly="true"></td>
-					</tr>
-					<tr>
-						<td>密码</td>
-						<td><input type="text" name="password" value="${student.password }"></td>
-					</tr>
-					<tr>
-						<td>姓名</td>
-						<td><input type="text" name="sname" value="${student.sname }"></td>
-					</tr>
-					<tr>
-						<td>性别</td>
-						<td><input type="text" name="gender" value="${student.gender }"></td>
-					</tr>
-					<tr>
-						<td>出生日期</td>
-						<td><input type="text" name="birthday" value="${student.birthday }"></td>
-					</tr>
-					<tr>
-						<td>联系电话</td>
-						<td><input type="text" name="telephone" value="${student.telephone }"></td>
-					</tr>
-					<tr>
-						<td>家庭住址</td>
-						<td><input type="text" name="address" value="${student.address }"></td>
-					</tr>
-				</table>
-				<input type="submit" value="确认修改"/>
-			</form>
-    	</center>
+    	<table border="1" >
+    		<tr>
+    			<td>学号</td>
+    			<td>密码</td>
+    			<td>姓名</td>
+    			<td>性别</td>
+    			<td>出生日期</td>
+    			<td>地址</td>
+    			<td>电话</td>
+    			<td>操作</td>
+    		</tr>
+    		<c:forEach items="${allStudentsList}" var="student" >
+    		<tr>
+    			<td>${student.sid}</td>
+    			<td>${student.password}</td>
+    			<td>${student.sname}</td>
+    			<td>${student.gender}</td>
+    			<td>${student.birthday}</td>
+    			<td>${student.address}</td>
+    			<td>${student.telephone}</td>
+    			<td><a href="student!getAStudentInfo.action?student.sid=${student.sid}">查看</a>&nbsp;<a href="student!updateStudentInfo.action?student.sid=${student.sid}">修改</a>&nbsp;<a href="student!getAStudentInfo.action?student.sid=${student.sid}">删除</a></td>
+    			
+    		</tr>
+    		</c:forEach>
+    	</table>
+    	
+    	<br/>
+    	
+    	<jsp:include page="/pagePlugin.jsp">
+				<jsp:param value="${pageNo}" name="pageNo"/>
+				<jsp:param value="${pageSize}" name="pageSize"/>
+				<jsp:param value="${keyword}" name="keyword"/>
+				<jsp:param value="${column}" name="column"/>
+				<jsp:param value="${allCount}" name="count"/>
+				<jsp:param value="student!getStudentList.action" name="URL"/>
+				<jsp:param value="sid:学号|sname:姓名" name="columnData"/>
+				<jsp:param value="3" name="pageStyle"/>
+    	</jsp:include>
+    </center>
 </div>
 </body>
 </html>

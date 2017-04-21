@@ -19,8 +19,8 @@ var treeMenu = [
 	{ level:2, name:"查看个人信息", ico:"images/icon_default.gif",link:"students/Students_info.jsp"},
 	{ level:2, name:"修改个人信息", ico:"images/icon_default.gif",link:"students/Students_update.jsp"},
 	{ level:1, name:"课程管理"},
-	{ level:2, name:"课程列表", ico:"images/icon_default.gif",link:"role_list.html"},
-	{ level:2, name:"已选修课程列表", ico:"images/icon_default.gif",link:"news_list.html"},
+	{ level:2, name:"所有课程", ico:"images/icon_default.gif",link:"students/Students_seleCourse_list.jsp"},
+	{ level:2, name:"已选修课程", ico:"images/icon_default.gif",link:"news_list.html"},
 	{ level:1, name:"公告管理", ico:"images/icon_default.gif",link:"bulletin_list.html"},
 	{ level:1, name:"系统文件", ico:"images/icon_default.gif",link:"complaint_list.html"} 
 ];
