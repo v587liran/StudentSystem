@@ -103,8 +103,13 @@ public class Student implements java.io.Serializable {
 		this.telephone = telephone;
 	}
 
-	public Set getCourses() {
+	public Set seleCourses() {
 		return this.courses;
+	}
+
+
+	public Set getCourses() {
+		return courses;
 	}
 
 	public void setCourses(Set courses) {
@@ -118,6 +123,5 @@ public class Student implements java.io.Serializable {
 				+ ", address=" + address + ", telephone=" + telephone
 				+ ", courses=" + courses + "]";
 	}
-
 	
 }

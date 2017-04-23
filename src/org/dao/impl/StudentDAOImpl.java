@@ -49,4 +49,14 @@ public class StudentDAOImpl implements IStudentDAO {
 		return ((Long) query.uniqueResult()).intValue();
 	}
 
+	@Override
+	public String findLastId() throws Exception {
+		String hql="FROM Student";
+		int allCount=getAllCount("", "sid");
+		System.out.println("--------------"+allCount);
+		Query query=HibernateSessionFactory.getSession().createQuery(hql);
+		query.setMaxResults(allCount);
+		return ((Student)(query.list().get(0))).getSid();
+	}
+
 }

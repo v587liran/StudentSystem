@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="mainContainer">
 	
 	<center>
-    		<form action="student!updateStudentInfo.action" method="post">
+    		<form action="student!update.action" method="post">
 	    		<table border="1" width="50%">
 					<tr>
 						<td>用户ID</td>

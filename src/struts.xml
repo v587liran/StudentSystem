@@ -20,6 +20,8 @@
 			<result name="allStudentsList">/students/Students_allList.jsp</result>
 			<result name="getAStudentInfo" >/students/Students_info.jsp</result>
 			<result name="updateStudentInfo">/students/Students_update.jsp</result>
+			<result name="showteStudentInfo">/students/Students_update.jsp</result>
+			<result name="deleteSeccess" >/students/Students_delete_success.jsp</result>
 		</action>
 		
 		<action name="studentToCourse" class="org.action.StudentToCourseAction">

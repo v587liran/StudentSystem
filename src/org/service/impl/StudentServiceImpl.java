@@ -111,4 +111,17 @@ public class StudentServiceImpl implements IStudentService {
 		return map;
 	}
 
+	@Override
+	public String findLastId() throws Exception {
+		String id="";
+		try {
+			id=StudentDAOFactory.getIStudentDAOInstance().findLastId();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			HibernateSessionFactory.closeSession();
+		}
+		return id;
+	}
 }

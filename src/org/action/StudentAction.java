@@ -3,6 +3,7 @@ package org.action;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.ServletActionContext;
 import org.factory.CourseServiceFactory;
@@ -66,9 +67,10 @@ public class StudentAction {
 		for(Student all:allStudentsList){
 			System.out.println(all.getSname()+"--------"+all.getAddress());
 		}
-		
 		return "allStudentsList";
 	}
+	
+	
 	
 	public String getAStudentInfo() throws Exception{
 		astudent=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
@@ -83,8 +85,10 @@ public class StudentAction {
 		return "getAStudentInfo";
 	}
 	
-	public String updateStudentInfo() throws Exception{
-		astudent=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
+	public String showStudentInfo() throws Exception{
+		sid=(String) ServletActionContext.getRequest().getAttribute("sid");
+		astudent=StudentServiceFactory.getIStudentServiceInstance().findById(sid);
+		Set<Course> seleCourses=astudent.getCourses();
 		student=new Student();
 		student.setSid(astudent.getSid());
 		student.setPassword(astudent.getPassword());
@@ -93,34 +97,31 @@ public class StudentAction {
 		student.setBirthday(astudent.getBirthday());
 		student.setTelephone(astudent.getTelephone());
 		student.setAddress(astudent.getAddress());
+		student.setCourses(seleCourses);
+		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
 		return "updateStudentInfo";
 	}
 	
+	public String updateStudentInfo() throws Exception{
+		sid=(String) ServletActionContext.getRequest().getAttribute("sid");
+		astudent=StudentServiceFactory.getIStudentServiceInstance().findById(sid);
+		Set<Course> seleCourses=astudent.getCourses();
+		student=new Student();
+		student.setSid(sid);
+		student.setPassword(password);
+		student.setSname(sname);
+		student.setGender(gender);
+		student.setBirthday(birthday);
+		student.setTelephone(telephone);
+		student.setAddress(address);
+		student.setCourses(seleCourses);
+		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
+		return "updateStudentInfo";
+	}
 	
-	
-	
-	public Student getAstudent() {
-		return astudent;
-	}
-
-	public void setAstudent(Student astudent) {
-		this.astudent = astudent;
-	}
-
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public int getAllCount() {
-		return allCount;
-	}
-
-	public void setAllCount(int allCount) {
-		this.allCount = allCount;
+	public String delete() throws Exception{
+		StudentServiceFactory.getIStudentServiceInstance().delete(student.getSid());
+		return "deleteSeccess";
 	}
 
 	public String getSid() {
@@ -211,6 +212,14 @@ public class StudentAction {
 		this.column = column;
 	}
 
+	public int getAllCount() {
+		return allCount;
+	}
+
+	public void setAllCount(int allCount) {
+		this.allCount = allCount;
+	}
+
 	public List<Student> getAllStudentsList() {
 		return allStudentsList;
 	}
@@ -235,17 +244,27 @@ public class StudentAction {
 		this.url = url;
 	}
 
-
 	public Student getStudents() {
 		return students;
 	}
-
 
 	public void setStudents(Student students) {
 		this.students = students;
 	}
 
-	
-	
-	
+	public Student getAstudent() {
+		return astudent;
+	}
+
+	public void setAstudent(Student astudent) {
+		this.astudent = astudent;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 }

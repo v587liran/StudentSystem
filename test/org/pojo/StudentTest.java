@@ -85,4 +85,16 @@ public class StudentTest {
 		flag=StudentServiceFactory.getIStudentServiceInstance().isLogin(student);
 		System.out.println(student.getAddress());
 	}
+	
+	@Test
+	public void add() throws Exception{
+		String maxIdString="";
+		maxIdString=StudentServiceFactory.getIStudentServiceInstance().findLastId();
+		System.out.println(maxIdString);
+	}
+	
+	
 }
+
+
+

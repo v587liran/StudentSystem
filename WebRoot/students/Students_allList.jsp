@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>${student.birthday}</td>
     			<td>${student.address}</td>
     			<td>${student.telephone}</td>
-    			<td><a href="student!getAStudentInfo.action?student.sid=${student.sid}">查看</a>&nbsp;<a href="student!updateStudentInfo.action?student.sid=${student.sid}">修改</a>&nbsp;<a href="student!getAStudentInfo.action?student.sid=${student.sid}">删除</a></td>
+    			<td><a href="student!getAStudentInfo.action?student.sid=${student.sid}">查看</a>&nbsp;<a href="student!showStudentInfo.action?sid=${student.sid}">修改</a>&nbsp;<a href="student!delete.action?student.sid=${student.sid}" onclick="return window.confirm('确定要删除该数据吗?');">删除</a></td>
     			
     		</tr>
     		</c:forEach>

@@ -18,4 +18,6 @@ public interface IStudentDAO {
 	public List<Student> findAll(int pageNo,int pageSize,String keyword,String column) throws Exception;
 
 	public int getAllCount(String keyword,String column) throws Exception;
+
+	public String findLastId() throws Exception;
 }

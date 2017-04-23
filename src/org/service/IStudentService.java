@@ -18,4 +18,6 @@ public interface IStudentService {
 	public Student findById(String id) throws Exception;
 	
 	public Map<String,Object> findAll(int pageNo,int pageSize,String keyword,String column) throws Exception;
+	
+	public String findLastId() throws Exception;
 }
