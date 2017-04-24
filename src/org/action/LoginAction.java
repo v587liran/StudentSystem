@@ -26,6 +26,9 @@ public class LoginAction extends ActionSupport {
 			if(StudentServiceFactory.getIStudentServiceInstance().isLogin(student)){
 				ServletActionContext.getRequest().getSession().setAttribute("student",student);
 				return "studentwelcome";
+			}else{
+				this.addFieldError("login", "帐号或者密码输入有误，请重新输入");
+				return "fail";
 			}
 		} else if(type==0) {
 			//判断为管理员
@@ -35,6 +38,9 @@ public class LoginAction extends ActionSupport {
 			if(AdminServiceFactory.getIAdminServiceInstance().idLogin(admin)){
 				ServletActionContext.getRequest().getSession().setAttribute("admin",admin);
 				return "adminwelcome";
+			}else{
+				this.addFieldError("login", "帐号或者密码输入有误，请重新输入");
+				return "fail";
 			}
 		}
 		return "fail";

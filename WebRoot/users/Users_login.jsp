@@ -294,6 +294,7 @@ body{
 							<input type="reset" class="btn" value="重置"/>
 						</div>
 						<!-- end of form -->
+						
 					</form>
 					
 				</div>

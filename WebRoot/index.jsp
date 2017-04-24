@@ -282,7 +282,7 @@ body{
 						<div id="user-type">
 							<span class="item">我&nbsp;&nbsp;&nbsp;是:</span>
 							<span class="radio">
-								学生<input type="radio" name="type" value="1" class="form-radio" >
+								学生<input type="radio" name="type" value="1" class="form-radio"  >
 								&nbsp;
 								管理员<input type="radio" name="type" value="0" class="form-radio">
 							</span>
@@ -293,8 +293,13 @@ body{
 							<input type="reset" class="btn" value="重置"/>
 						</div>
 						<!-- end of form -->
+						<br /><br />
+						<center>
+							<div style="color:red; font-size:20px; font-weight:bold; text-decoration:none;">
+								<s:fielderror/> <!-- 显示表单验证的出错信息 -->
+							</div>
+						</center>
 					</form>
-					
 				</div>
 			</div>
 		</div>

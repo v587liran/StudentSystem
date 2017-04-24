@@ -12,7 +12,7 @@
 		<action name="user" class="org.action.LoginAction">
 			<result name="studentwelcome">/users/Students_login_success.jsp</result>
 			<result name="adminwelcome">/users/Admin_login_success.jsp</result>
-			<result name="fail">/student/fail.jsp</result>
+			<result name="fail">index.jsp</result>
 			<result name="logout">index.jsp</result>
 		</action>
 		

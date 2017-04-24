@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:param value="adminToCourse!List.action" name="URL"/>
 				<jsp:param value="cname:课程名称" name="columnData"/>
 				<jsp:param value="3" name="pageStyle"/>
-			</jsp:include>
+		</jsp:include>
 	</center>
   </body>
 </html>
