@@ -103,38 +103,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="mainContainer">
 	
 	<center>
-    		<form action="student!update.action" method="post">
+    		<form action="student!add.action" method="post">
 	    		<table border="1" width="50%">
 					<tr>
 						<td>用户ID</td>
-						<td><input type="text" name="sid" value="${student.sid }" readonly="true"></td>
+						<td><input type="text" name="sid"></td>
 					</tr>
 					<tr>
 						<td>密码</td>
-						<td><input type="text" name="password" value="${student.password }"></td>
+						<td><input type="text" name="password""></td>
 					</tr>
 					<tr>
 						<td>姓名</td>
-						<td><input type="text" name="sname" value="${student.sname }"></td>
+						<td><input type="text" name="sname" ></td>
 					</tr>
 					<tr>
 						<td>性别</td>
-						<td><input type="text" name="gender" value="${student.gender }"></td>
+						<td><input type="text" name="gender"></td>
 					</tr>
 					<tr>
 						<td>出生日期</td>
-						<td><input type="text" name="birthday" value="${student.birthday }"></td>
+						<td><input type="text" name="birthday" ></td>
 					</tr>
 					<tr>
 						<td>联系电话</td>
-						<td><input type="text" name="telephone" value="${student.telephone }"></td>
+						<td><input type="text" name="telephone" ></td>
 					</tr>
 					<tr>
 						<td>家庭住址</td>
-						<td><input type="text" name="address" value="${student.address }"></td>
+						<td><input type="text" name="address"></td>
 					</tr>
 				</table>
-				<input type="submit" value="确认修改"/>
+				<input type="submit" value="添加"/>
 			</form>
     	</center>
 </div>

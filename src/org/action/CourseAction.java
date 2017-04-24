@@ -17,8 +17,57 @@ public class CourseAction extends ActionSupport {
 	
 	private List<Course> allCourses;
 	
+	private String url;
+	
 	private Course course;
 	
+	private int pageNo=1;
+	private int pageSize=5;
+	private String column="";
+	private String keyword="cid";
+	private int count;
+	
+	
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getColumn() {
+		return column;
+	}
+
+	public void setColumn(String column) {
+		this.column = column;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public String upDate() throws Exception{
 		
 		
@@ -84,4 +133,66 @@ public class CourseAction extends ActionSupport {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	
+	//admin
+	   //添加课程
+		public String insert() throws Exception{
+			CourseServiceFactory.getICourseServiceInstance().add(course);
+			List();
+			//allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(1, 5, "", "name").get("findAll");
+			return "Admin_CourseList";
+			
+		}
+		
+	   //删除课程
+		public String delete() throws Exception{
+			CourseServiceFactory.getICourseServiceInstance().delete(course.getCid());
+			List();
+			//allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(1, 5, "", "name").get("findAll");
+			return "Admin_CourseList";
+		}
+		
+		//修改课程
+		public String update() throws Exception{
+			CourseServiceFactory.getICourseServiceInstance().update(course);
+			List();
+			//allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(1, 5, "", "name").get("findAll");
+			return "Admin_CourseList";
+		}
+		
+		public String List() throws Exception{
+			System.out.println("-----------------------------------"+keyword+"____"+column);
+			allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(pageNo, pageSize, keyword, column).get("findAll");
+			return "Admin_CourseList";
+		}
+		
+		public String getCourseById() throws Exception{
+			course = CourseServiceFactory.getICourseServiceInstance().findById(course.getCid());
+			url = "adminToCourse!update.action";
+			return "Course_Insert";
+		}
+		
+		public String proadd() throws Exception{
+			url = "adminToCourse!insert.action";
+			return "Course_Insert";
+		}
+		
+		public String getUrl() {
+			return url;
+		}
+
+		public void setUrl(String url) {
+			this.url = url;
+		}
+
+		public String getKey() {
+			return key;
+		}
+
+		public void setKey(String key) {
+			this.key = key;
+		}
+
+		private String key;
+	
 }

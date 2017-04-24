@@ -6,7 +6,9 @@ import org.pojo.Course;
 
 public interface ICourseDAO {
 	public void insert(Course course) throws Exception;
+	
 	public void delete(String id) throws Exception;
+	
 	public void update(Course course) throws Exception;
 	
 	public Course findById(String id) throws Exception;

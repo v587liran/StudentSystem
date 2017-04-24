@@ -39,7 +39,17 @@ public class LoginAction extends ActionSupport {
 		}
 		return "fail";
 	}
-
+	
+	public String Admin_logout() throws Exception{
+		ServletActionContext.getRequest().getSession().setAttribute("student", null);
+		return "logout";
+	}
+	
+	public String Student_logout() throws Exception{
+		ServletActionContext.getRequest().getSession().setAttribute("admin", null);
+		return "logout";
+	}
+	
 	public String getUserid() {
 		return userid;
 	}

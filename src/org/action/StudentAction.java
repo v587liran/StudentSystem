@@ -8,6 +8,7 @@ import java.util.Set;
 import org.apache.struts2.ServletActionContext;
 import org.factory.CourseServiceFactory;
 import org.factory.StudentServiceFactory;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.pojo.Course;
 import org.pojo.Student;
 
@@ -35,6 +36,19 @@ public class StudentAction {
 	private Student astudent;
 	private Student student;
 	
+	public String add() throws Exception{
+		Student students=new Student();
+		students.setSid(sid);
+		students.setPassword(password);
+		students.setSname(sname);
+		students.setGender(gender);
+		students.setBirthday(birthday);
+		students.setTelephone(telephone);
+		students.setAddress(address);
+		StudentServiceFactory.getIStudentServiceInstance().addStudent(students);
+		return "addStudent";
+	}
+	
 	public String update() throws Exception{
 		students=new Student();
 		students.setSid(sid);
@@ -61,7 +75,6 @@ public class StudentAction {
 		Map<String, Object> map=StudentServiceFactory.getIStudentServiceInstance().findAll(pageNo, pageSize, keyword, column);
 		allStudentsList=(List<Student>) map.get("findAll");
 		allCount=(Integer) map.get("allCount");
-		
 		System.out.println("---------------"+allCount);
 		
 		for(Student all:allStudentsList){

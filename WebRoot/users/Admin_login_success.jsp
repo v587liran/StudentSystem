@@ -30,14 +30,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="user_info">
 			<div id="welcome">欢迎${sessionScope.loginUserName}使用本系统</div>
-			<div id="logout"><a href="<%=path%>/users/Users_logout.action">安全退出</a></div>
+			<div id="logout"><a href="user!Admin_logout.action">安全退出</a></div>
 		</div>
 	</div>
 	<div id="navigator">
 		<iframe src="tree_admin.jsp"></iframe>
         </div>
 	<div id="main">
-		<iframe name="MainFrame" src="Users_login_main.jsp"></iframe>
+		<iframe name="MainFrame" src="users/Users_login_main.jsp"></iframe>
 	</div>
 	<div id="footer">Copyright © 2009-2015 All Rights Reserved Powered By Somoniu</div>
 </div>

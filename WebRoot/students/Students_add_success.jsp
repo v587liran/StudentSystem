@@ -78,12 +78,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <div id="navi">
 	<!-- 导航空白 -->
+	<div id='naviDiv'>
+		<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;个人信息管理<span>&nbsp;
+		<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;<a href="students/Students_info.jsp">修改信息</a><span>&nbsp;
+	</div>
 </div>
 <div id="tips">
 	<!-- 导航空白 -->
 </div>
 <div id="mainContainer">
-   <img src="../images/welcome.jpg">
+   <strong>添加成功</strong><a href="student!getStudentList.action">返回列表</a>
    <!--数据表格空白 -->
 </div>
 </body>
