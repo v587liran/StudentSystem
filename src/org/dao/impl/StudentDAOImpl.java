@@ -2,6 +2,7 @@ package org.dao.impl;
 
 import java.util.List;
 
+import org.apache.struts2.ServletActionContext;
 import org.dao.IStudentDAO;
 import org.hibernate.Query;
 import org.jdbc.HibernateSessionFactory;
@@ -59,4 +60,10 @@ public class StudentDAOImpl implements IStudentDAO {
 		return ((Student)(query.list().get(0))).getSid();
 	}
 
+	@Override
+	public void updateSle(Student user) throws Exception {
+		HibernateSessionFactory.getSession().update(user);
+		Student re = (Student) ServletActionContext.getRequest().getSession().getAttribute("student");
+		user.setCourses(re.getCourses());
+	}
 }

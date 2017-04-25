@@ -14,4 +14,8 @@ public interface ICourseService {
 	public Course findById(String id) throws Exception;
 	
 	public Map<String, Object> findAll(int pageNo,int pageSize,String keyword,String column) throws Exception;
+
+	public Course courseFindById(String cid)throws Exception;
+
+	public Map<String, Object> list(int pageNo, int pageSize, String keyword,String column) throws Exception;
 }

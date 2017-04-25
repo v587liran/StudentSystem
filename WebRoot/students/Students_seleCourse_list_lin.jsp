@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -95,48 +96,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div id="navi">
 		<div id='naviDiv'>
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;添加学生<span>&nbsp;
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;课程管理<span>&nbsp;</span>
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;所有课程<span>&nbsp;</span>
 		</div>
 	</div>
 	<div id="tips"></div>
 	<div id="mainContainer">
 	
 	<center>
-    		<form action="student!add.action" method="post">
-	    		<table border="1" width="50%">
+    	<s:form action="studentCou!selectCourse.action" method="post" namespace="/" theme="simple">
+			<table border="1" width="80%">
+				<tr>
+					
+					<td>课程名</td>
+					<td>任课教师</td>
+					<td>上课时间</td>
+					<td>课程学分</td>
+					<td>上课地点</td>
+					<td>选课</td>
+				</tr>
+				<c:forEach var ="c" items="${allCourses}"> 
 					<tr>
-						<td>用户ID</td>
-						<td><input type="text" name="sid"></td>
+						<td>${c.cname}</td>
+						<td>${c.cteacher}</td>
+						<td>${c.ctime}</td>
+						<td>${c.ccredits}</td>
+						<td>${c.caddress}</td>
+						<td><input type="checkbox" name="courseId" onclick="" value="${c.cid}"/>
+						</td>
 					</tr>
-					<tr>
-						<td>密码</td>
-						<td><input type="text" name="password""></td>
-					</tr>
-					<tr>
-						<td>姓名</td>
-						<td><input type="text" name="sname" ></td>
-					</tr>
-					<tr>
-						<td>性别</td>
-						<td><input type="text" name="gender"></td>
-					</tr>
-					<tr>
-						<td>出生日期</td>
-						<td><input type="text" name="birthday" ></td>
-					</tr>
-					<tr>
-						<td>联系电话</td>
-						<td><input type="text" name="telephone" ></td>
-					</tr>
-					<tr>
-						<td>家庭住址</td>
-						<td><input type="text" name="address"></td>
-					</tr>
-				</table>
-				<input type="submit" value="添加"/>
-			</form>
-    	</center>
+			</c:forEach> 
+			</table>
+		<input type="submit"  value="选课"/>
+			</s:form>
+    	
+    	<br/>
+    	
+    	<jsp:include page="/pagePlugin.jsp">
+				<jsp:param value="${pageNo}" name="pageNo"/>
+				<jsp:param value="${pageSize}" name="pageSize"/>
+				<jsp:param value="${column}" name="column"/>
+				<jsp:param value="${keyword}" name="keyword"/>
+				<jsp:param value="${allCount}" name="count"/>
+				<jsp:param value="course!list.action" name="URL"/>
+				<jsp:param value="cid:课程号|cname:课程名" name="columnData"/>
+				<jsp:param value="3" name="pageStyle"/>
+			</jsp:include>
+		
+    </center>
 </div>
 </body>
 </html>

@@ -20,4 +20,6 @@ public interface IStudentService {
 	public Map<String,Object> findAll(int pageNo,int pageSize,String keyword,String column) throws Exception;
 	
 	public String findLastId() throws Exception;
+	
+	public void selectCourse(Student user) throws Exception;
 }

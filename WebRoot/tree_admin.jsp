@@ -29,8 +29,8 @@ var treeMenu = [
 	{ level:2, name:"学生列表", ico:"images/icon_default.gif",link:"student!getStudentList.action"},
 	{ level:2, name:"添加学生", ico:"images/icon_default.gif",link:"students/Students_add.jsp"},
 	{ level:1, name:"课程管理"},
-	{ level:2, name:"课程列表", ico:"images/icon_default.gif",link:"adminToCourse!List.action"},
-	{ level:2, name:"添加课程", ico:"images/icon_default.gif",link:"role_list.html"},
+	{ level:2, name:"课程列表", ico:"images/icon_default.gif",link:"adminToCourse!getCourses.action"},
+	{ level:2, name:"添加课程", ico:"images/icon_default.gif",link:"adminToCourse!proadd.action"},
 	{ level:1, name:"公告管理", ico:"images/icon_default.gif",link:"bulletin_list.html"},
 	{ level:1, name:"系统文件", ico:"images/icon_default.gif",link:"complaint_list.html"} 
 ];

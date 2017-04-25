@@ -95,46 +95,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div id="navi">
 		<div id='naviDiv'>
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;添加学生<span>&nbsp;
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;个人信息管理<span>&nbsp;
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;修改个人信息<span>&nbsp;
 		</div>
 	</div>
 	<div id="tips"></div>
 	<div id="mainContainer">
 	
 	<center>
-    		<form action="student!add.action" method="post">
+    		<form action="student!update.action" method="post">
 	    		<table border="1" width="50%">
 					<tr>
 						<td>用户ID</td>
-						<td><input type="text" name="sid"></td>
+						<td><input type="text" name="sid" value="${student.sid }" readonly="true"></td>
 					</tr>
 					<tr>
 						<td>密码</td>
-						<td><input type="text" name="password""></td>
+						<td><input type="text" name="password" value="${student.password }"></td>
 					</tr>
 					<tr>
 						<td>姓名</td>
-						<td><input type="text" name="sname" ></td>
+						<td><input type="text" name="sname" value="${student.sname }"></td>
 					</tr>
 					<tr>
 						<td>性别</td>
-						<td><input type="text" name="gender"></td>
+						<td><input type="text" name="gender" value="${student.gender }"></td>
 					</tr>
 					<tr>
 						<td>出生日期</td>
-						<td><input type="text" name="birthday" ></td>
+						<td><input type="text" name="birthday" value="${student.birthday }"></td>
 					</tr>
 					<tr>
 						<td>联系电话</td>
-						<td><input type="text" name="telephone" ></td>
+						<td><input type="text" name="telephone" value="${student.telephone }"></td>
 					</tr>
 					<tr>
 						<td>家庭住址</td>
-						<td><input type="text" name="address"></td>
+						<td><input type="text" name="address" value="${student.address }"></td>
 					</tr>
 				</table>
-				<input type="submit" value="添加"/>
+				<input type="submit" value="确认修改"/>
 			</form>
     	</center>
 </div>

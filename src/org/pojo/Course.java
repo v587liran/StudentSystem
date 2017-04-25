@@ -101,6 +101,20 @@ public class Course implements java.io.Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		
+		return this.cid.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Course course =(Course)obj;
+		
+		return this.getCid().equals(course.getCid());
+	}
+
+	
+	@Override
 	public String toString() {
 		return "Course [cid=" + cid + ", cname=" + cname + ", cteacher="
 				+ cteacher + ", ctime=" + ctime + ", ccredits=" + ccredits

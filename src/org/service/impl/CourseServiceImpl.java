@@ -83,4 +83,32 @@ public class CourseServiceImpl implements ICourseService {
 		return map;
 	}
 
+	@Override
+	public Course courseFindById(String cid) throws Exception {
+		try {
+			return  CourseDAOFactory.getICourseDAOInstance().findById(cid);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally{
+			HibernateSessionFactory.closeSession();
+		}
+	}
+
+	@Override
+	public Map<String, Object> list(int pageNo, int pageSize, String keyword,String column) throws Exception {
+		Map<String, Object> map =new HashMap<String, Object>();
+		try {
+			map.put("allCourses",CourseDAOFactory.getICourseDAOInstance().findAll(pageNo,
+					pageSize, keyword, column) );
+			map.put("count", CourseDAOFactory.getICourseDAOInstance().getCount(keyword, 
+					column));
+		} catch (Exception e) {
+			e.printStackTrace();
+                throw e;
+		}finally{
+			HibernateSessionFactory.closeSession();
+		}
+		return map;
+	}
 }

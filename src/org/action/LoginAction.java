@@ -47,12 +47,12 @@ public class LoginAction extends ActionSupport {
 	}
 	
 	public String Admin_logout() throws Exception{
-		ServletActionContext.getRequest().getSession().setAttribute("student", null);
+		ServletActionContext.getRequest().getSession().removeAttribute("admin");
 		return "logout";
 	}
 	
 	public String Student_logout() throws Exception{
-		ServletActionContext.getRequest().getSession().setAttribute("admin", null);
+		ServletActionContext.getRequest().getSession().removeAttribute("student");
 		return "logout";
 	}
 	

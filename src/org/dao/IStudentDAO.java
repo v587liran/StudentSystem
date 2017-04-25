@@ -20,4 +20,6 @@ public interface IStudentDAO {
 	public int getAllCount(String keyword,String column) throws Exception;
 
 	public String findLastId() throws Exception;
+	
+	public void updateSle(Student user) throws Exception;
 }

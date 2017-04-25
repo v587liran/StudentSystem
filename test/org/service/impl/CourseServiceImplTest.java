@@ -3,8 +3,10 @@ package org.service.impl;
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.factory.CourseServiceFactory;
 import org.factory.StudentServiceFactory;
@@ -14,6 +16,29 @@ import org.pojo.Student;
 
 public class CourseServiceImplTest {
 
+	@Test
+	public void testAdd1() throws Exception {
+		String[] cid={"12","13","14"};
+		
+		Student student=StudentServiceFactory.getIStudentServiceInstance().findById("1");
+		
+		Set<Course> set=new HashSet<Course>();
+		
+		set=student.getCourses();
+		
+		for(int i=0;i<cid.length;i++){
+			Course course=CourseServiceFactory.getICourseServiceInstance().findById(cid[i]);
+			set.add(course);
+		}
+		
+		student.setCourses(set);
+		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
+		
+	}
+	
+	
+	
+	
 	@Test
 	public void testAdd() throws Exception {
 		Course course=new Course();

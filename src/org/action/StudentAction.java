@@ -50,24 +50,29 @@ public class StudentAction {
 	}
 	
 	public String update() throws Exception{
-		students=new Student();
-		students.setSid(sid);
-		students.setPassword(password);
-		students.setSname(sname);
-		students.setGender(gender);
-		students.setBirthday(birthday);
-		students.setTelephone(telephone);
-		students.setAddress(address);
+		student=new Student();
+		student.setSid(sid);
+		student.setPassword(password);
+		student.setSname(sname);
+		student.setGender(gender);
+		student.setBirthday(birthday);
+		student.setTelephone(telephone);
+		student.setAddress(address);
 		
-		Student student=(Student) ServletActionContext.getRequest().getSession().getAttribute("student");
-		students.setCourses(student.getCourses());
+		System.out.println(student.toString());
 		
-		StudentServiceFactory.getIStudentServiceInstance().upDate(students);
-		Student students=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
-		ServletActionContext.getRequest().getSession().setAttribute("student", students);
+		
+		Student students=(Student) ServletActionContext.getRequest().getSession().getAttribute("student");
+		
+		student.setCourses(students.getCourses());
+		
+		StudentServiceFactory.getIStudentServiceInstance().upDate(student);
+		
+		//Student students=StudentServiceFactory.getIStudentServiceInstance().findById(student.getSid());
+		
+		ServletActionContext.getRequest().getSession().setAttribute("student", student);
 		
 		System.out.println("----------------------------------"+students.getPassword());
-		
 		return "updateSeccess";
 	}
 

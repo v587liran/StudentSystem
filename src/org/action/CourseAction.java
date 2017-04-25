@@ -23,8 +23,8 @@ public class CourseAction extends ActionSupport {
 	
 	private int pageNo=1;
 	private int pageSize=5;
-	private String column="";
-	private String keyword="cid";
+	private String column="cid";
+	private String keyword="";
 	private int count;
 	
 	
@@ -136,29 +136,10 @@ public class CourseAction extends ActionSupport {
 	
 	//admin
 	   //添加课程
-		public String insert() throws Exception{
-			CourseServiceFactory.getICourseServiceInstance().add(course);
-			List();
-			//allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(1, 5, "", "name").get("findAll");
-			return "Admin_CourseList";
-			
-		}
 		
-	   //删除课程
-		public String delete() throws Exception{
-			CourseServiceFactory.getICourseServiceInstance().delete(course.getCid());
-			List();
-			//allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(1, 5, "", "name").get("findAll");
-			return "Admin_CourseList";
-		}
 		
 		//修改课程
-		public String update() throws Exception{
-			CourseServiceFactory.getICourseServiceInstance().update(course);
-			List();
-			//allCourses = (List<Course>) CourseServiceFactory.getICourseServiceInstance().findAll(1, 5, "", "name").get("findAll");
-			return "Admin_CourseList";
-		}
+	
 		
 		public String List() throws Exception{
 			System.out.println("-----------------------------------"+keyword+"____"+column);
@@ -166,16 +147,9 @@ public class CourseAction extends ActionSupport {
 			return "Admin_CourseList";
 		}
 		
-		public String getCourseById() throws Exception{
-			course = CourseServiceFactory.getICourseServiceInstance().findById(course.getCid());
-			url = "adminToCourse!update.action";
-			return "Course_Insert";
-		}
 		
-		public String proadd() throws Exception{
-			url = "adminToCourse!insert.action";
-			return "Course_Insert";
-		}
+		
+		
 		
 		public String getUrl() {
 			return url;

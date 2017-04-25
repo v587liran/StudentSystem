@@ -124,4 +124,18 @@ public class StudentServiceImpl implements IStudentService {
 		}
 		return id;
 	}
+
+	@Override
+	public void selectCourse(Student user) throws Exception {
+		Transaction tx = HibernateSessionFactory.getSession().beginTransaction();
+		try {
+			StudentDAOFactory.getIStudentDAOInstance().updateSle(user);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally{
+			HibernateSessionFactory.closeSession();
+		}
+	}
 }

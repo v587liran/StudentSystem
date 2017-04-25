@@ -29,7 +29,7 @@ public class StudentServiceImplTest {
 	@Test
 	public void testUpDate() throws Exception {
 		Student student=new Student();
-		student.setSid("1001");
+		student.setSid("1");
 		student.setPassword("123456");
 		student.setSname("李四");
 		student.setTelephone("110");

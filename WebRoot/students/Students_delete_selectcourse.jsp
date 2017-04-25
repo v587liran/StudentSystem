@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -95,48 +96,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div id="navi">
 		<div id='naviDiv'>
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
-			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;添加学生<span>&nbsp;
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;课程管理<span>&nbsp;</span>
+			<span><img src="images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;已选课程<span>&nbsp;</span>
 		</div>
 	</div>
 	<div id="tips"></div>
 	<div id="mainContainer">
-	
-	<center>
-    		<form action="student!add.action" method="post">
-	    		<table border="1" width="50%">
+		<center>
+			<form action="studentCou!deleCourse.action"  method="post">
+		    	<table border="1">
 					<tr>
-						<td>用户ID</td>
-						<td><input type="text" name="sid"></td>
+						<td>课程名</td>
+						<td>任课教师</td>
+						<td>上课时间</td>
+						<td>操作</td>
 					</tr>
-					<tr>
-						<td>密码</td>
-						<td><input type="text" name="password""></td>
-					</tr>
-					<tr>
-						<td>姓名</td>
-						<td><input type="text" name="sname" ></td>
-					</tr>
-					<tr>
-						<td>性别</td>
-						<td><input type="text" name="gender"></td>
-					</tr>
-					<tr>
-						<td>出生日期</td>
-						<td><input type="text" name="birthday" ></td>
-					</tr>
-					<tr>
-						<td>联系电话</td>
-						<td><input type="text" name="telephone" ></td>
-					</tr>
-					<tr>
-						<td>家庭住址</td>
-						<td><input type="text" name="address"></td>
-					</tr>
+					
+					<c:forEach var ="c" items="${student.courses}"> 
+						<tr>
+							<td>${c.cid}</td>
+							<td>${c.cteacher}</td>
+							<td>${c.ctime}</td>
+							<td><input type="checkbox" name="courseId" value="${c.cid}"/>
+							</td>
+						</tr>
+					</c:forEach> 
+					
 				</table>
-				<input type="submit" value="添加"/>
+				<input type="submit" value="退课"/>
 			</form>
-    	</center>
-</div>
+		</center>
+	</div>
 </body>
 </html>
